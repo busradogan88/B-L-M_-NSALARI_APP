@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "747121888301",
+    "project_id": "tubitak-app-177cc",
+    "storage_bucket": "tubitak-app-177cc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747121888301:android:da97778a0556b0403dbca4",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg4uyyotqCFJeUiJe2Abi9BmQPim5TloM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

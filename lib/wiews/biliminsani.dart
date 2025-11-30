@@ -217,8 +217,10 @@ class Biliminsani extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => Buluslar(
-                kategori: kat,
+              builder: (_) => BilimInsaniBuluslar(
+                kategoriKey: ref.parent?.parent?.id ?? _slugify(kat).replaceAll('_', ''),
+                bilimInsaniKey: ref.id,
+                bilimInsaniAdi: isim,
               ),
             ),
           );

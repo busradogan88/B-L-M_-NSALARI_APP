@@ -37,7 +37,6 @@ class _HaritaState extends State<Harita> {
 
   /// 3️⃣ Bilim insanı konumları
   final List<BilimInsaniKonum> konumlar = [
-    // İBN-İ SİNA
     BilimInsaniKonum(
       id: "ibn_sina_dogum",
       isim: "İbn-i Sina",
@@ -49,14 +48,11 @@ class _HaritaState extends State<Harita> {
     BilimInsaniKonum(
       id: "ibn_sina_calisma",
       isim: "İbn-i Sina",
-      kisaBilgi:
-          "Tıp alanında önemli eserler yazdı. İsfahan civarında çalıştı.",
+      kisaBilgi: "Tıp alanında önemli eserler yazdı. İsfahan civarında çalıştı.",
       latitude: 32.6546,
       longitude: 51.6680,
       tur: "Çalışma bölgesi",
     ),
-
-    // 1️⃣ EL-BATTÂNÎ – Harran (Şanlıurfa)
     BilimInsaniKonum(
       id: "battani_dogum",
       isim: "El-Battânî",
@@ -66,8 +62,6 @@ class _HaritaState extends State<Harita> {
       longitude: 39.0300,
       tur: "Doğum yeri (Harran)",
     ),
-
-    // 2️⃣ ALİ KUŞÇU – Semerkant
     BilimInsaniKonum(
       id: "ali_kuscu_dogum",
       isim: "Ali Kuşçu",
@@ -77,8 +71,6 @@ class _HaritaState extends State<Harita> {
       longitude: 66.9597,
       tur: "Doğum yeri (Semerkant)",
     ),
-
-    // 3️⃣ TAKİYÜDDİN – İstanbul’da rasathane
     BilimInsaniKonum(
       id: "takiyuddin_calisma",
       isim: "Takiyüddin",
@@ -88,8 +80,6 @@ class _HaritaState extends State<Harita> {
       longitude: 28.9784,
       tur: "Çalışma yeri (İstanbul)",
     ),
-
-    // 4️⃣ EL-CAHIZ – Basra
     BilimInsaniKonum(
       id: "el_cahiz_dogum",
       isim: "El-Cahız",
@@ -99,8 +89,6 @@ class _HaritaState extends State<Harita> {
       longitude: 47.7804,
       tur: "Doğum yeri (Basra)",
     ),
-
-    // 5️⃣ İBN BAYTAR – Malaga
     BilimInsaniKonum(
       id: "ibn_baytar_dogum",
       isim: "İbn Baytar",
@@ -110,8 +98,6 @@ class _HaritaState extends State<Harita> {
       longitude: -4.4214,
       tur: "Doğum yeri (Malaga)",
     ),
-
-    // 6️⃣ KÂTİP ÇELEBİ – İstanbul
     BilimInsaniKonum(
       id: "katip_celebi_dogum",
       isim: "Kâtib Çelebi",
@@ -121,8 +107,6 @@ class _HaritaState extends State<Harita> {
       longitude: 28.9784,
       tur: "Doğum yeri / Çalışma (İstanbul)",
     ),
-
-    // 7️⃣ PİRİ REİS – Gelibolu
     BilimInsaniKonum(
       id: "piri_reis_dogum",
       isim: "Piri Reis",
@@ -132,8 +116,6 @@ class _HaritaState extends State<Harita> {
       longitude: 26.6700,
       tur: "Doğum yeri (Gelibolu)",
     ),
-
-    // 8️⃣ FARABİ – Farab/Otrar
     BilimInsaniKonum(
       id: "farabi_dogum",
       isim: "Farabi",
@@ -143,8 +125,6 @@ class _HaritaState extends State<Harita> {
       longitude: 68.0000,
       tur: "Doğum yeri (Farab)",
     ),
-
-    // 9️⃣ İBN RÜŞD – Kurtuba
     BilimInsaniKonum(
       id: "ibn_rusd_dogum",
       isim: "İbn Rüşd",
@@ -154,8 +134,6 @@ class _HaritaState extends State<Harita> {
       longitude: -4.7794,
       tur: "Doğum yeri (Kurtuba)",
     ),
-
-    // 🔟 CEZERÎ – Cizre
     BilimInsaniKonum(
       id: "cezri_dogum",
       isim: "El-Cezerî",
@@ -165,8 +143,6 @@ class _HaritaState extends State<Harita> {
       longitude: 42.1900,
       tur: "Doğum yeri (Cizre)",
     ),
-
-    // 1️⃣1️⃣ İBN HEYSEM – Kahire
     BilimInsaniKonum(
       id: "ibn_heysem_calisma",
       isim: "İbn Heysem",
@@ -176,8 +152,6 @@ class _HaritaState extends State<Harita> {
       longitude: 31.2357,
       tur: "Çalışma yeri (Kahire)",
     ),
-
-    // 1️⃣2️⃣ CABİR B. HAYYAN – Kufe
     BilimInsaniKonum(
       id: "cabir_hayyan_dogum",
       isim: "Cabir b. Hayyan",
@@ -187,8 +161,6 @@ class _HaritaState extends State<Harita> {
       longitude: 44.4056,
       tur: "Yaşadığı yer (Kufe)",
     ),
-
-    // 1️⃣3️⃣ EBÛ BEKİR ER-RÂZÎ – Rey
     BilimInsaniKonum(
       id: "ebu_bekir_razi_dogum",
       isim: "Ebû Bekir er-Râzî",
@@ -198,8 +170,6 @@ class _HaritaState extends State<Harita> {
       longitude: 51.4400,
       tur: "Doğum yeri (Rey)",
     ),
-
-    // 1️⃣4️⃣ HAREZMÎ – Harezm bölgesi
     BilimInsaniKonum(
       id: "harezmi_dogum",
       isim: "Harezmi",
@@ -209,19 +179,14 @@ class _HaritaState extends State<Harita> {
       longitude: 60.6300,
       tur: "Doğum yeri (Harezm)",
     ),
-
-    // 1️⃣5️⃣ ÖMER HAYYAM – Nişabur
     BilimInsaniKonum(
       id: "omer_hayyam_dogum",
       isim: "Ömer Hayyam",
-      kisaBilgi:
-          "Şair, matematikçi ve astronomdur. Nişabur’da doğmuştur.",
+      kisaBilgi: "Şair, matematikçi ve astronomdur. Nişabur’da doğmuştur.",
       latitude: 36.2140,
       longitude: 58.7960,
       tur: "Doğum yeri (Nişabur)",
     ),
-
-    // 1️⃣6️⃣ EBÛL-KASIM ZEHRÂVÎ – Kurtuba
     BilimInsaniKonum(
       id: "zehravi_dogum",
       isim: "Ebü’l-Kasım Zehravî",
@@ -231,8 +196,6 @@ class _HaritaState extends State<Harita> {
       longitude: -4.7794,
       tur: "Doğum/Çalışma (Endülüs, Kurtuba)",
     ),
-
-    // 1️⃣7️⃣ İBN NEFİS – Şam
     BilimInsaniKonum(
       id: "ibn_nefis_calisma",
       isim: "İbn Nefis",
@@ -312,7 +275,6 @@ class _HaritaState extends State<Harita> {
                 ),
               ),
               const SizedBox(height: 12),
-              // 👇 Burada artık "Daha fazlasını gör" butonu YOK
             ],
           ),
         );
@@ -324,6 +286,23 @@ class _HaritaState extends State<Harita> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+
+      // ✅ APPBAR + GERİ OK
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        foregroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          widget.title.isNotEmpty ? widget.title : "Harita",
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -337,6 +316,7 @@ class _HaritaState extends State<Harita> {
             padding: const EdgeInsets.all(12.0),
             child: Column(
               children: [
+                const SizedBox(height: 6),
                 const Text(
                   "Bilim İnsanları Haritası 🌍",
                   style: TextStyle(

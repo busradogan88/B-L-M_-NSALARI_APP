@@ -1,3 +1,6 @@
 [submodule "lib/oyunlar/bulmaca"]
 	path = lib/oyunlar/bulmaca
 	url = https://github.com/beyzanurbirinci/bulmaca.git
+[submodule "lib/oyunlar/quiz"]
+	path = lib/oyunlar/quiz
+	url = https://github.com/beyzanurbirinci/QuizUygulamasi.git

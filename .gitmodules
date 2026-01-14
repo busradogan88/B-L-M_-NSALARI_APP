@@ -7,3 +7,6 @@
 [submodule "lib/oyunlar/kart_eslestirme"]
 	path = lib/oyunlar/kart_eslestirme
 	url = https://github.com/SnGokceCE/karteslestirme.git
+[submodule "lib/oyunlar/ben_kimim"]
+	path = lib/oyunlar/ben_kimim
+	url = https://github.com/SnGokceCE/benkimim_app.git

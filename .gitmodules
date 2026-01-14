@@ -10,3 +10,6 @@
 [submodule "lib/oyunlar/ben_kimim"]
 	path = lib/oyunlar/ben_kimim
 	url = https://github.com/SnGokceCE/benkimim_app.git
+[submodule "benkimim_app"]
+	path = benkimim_app
+	url = https://github.com/SnGokceCE/benkimim_app.git

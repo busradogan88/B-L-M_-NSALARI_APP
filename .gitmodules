@@ -1,0 +1,3 @@
+[submodule "lib/oyunlar/bulmaca"]
+	path = lib/oyunlar/bulmaca
+	url = https://github.com/beyzanurbirinci/bulmaca.git

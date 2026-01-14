@@ -4,3 +4,6 @@
 [submodule "lib/oyunlar/quiz"]
 	path = lib/oyunlar/quiz
 	url = https://github.com/beyzanurbirinci/QuizUygulamasi.git
+[submodule "lib/oyunlar/kart_eslestirme"]
+	path = lib/oyunlar/kart_eslestirme
+	url = https://github.com/SnGokceCE/karteslestirme.git

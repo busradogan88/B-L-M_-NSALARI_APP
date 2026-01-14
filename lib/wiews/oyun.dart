@@ -183,7 +183,7 @@ class Oyun extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const BenKimimSayfasi(),
+                                  builder: (_) => const benkimim.BenKimimOyunSayfasi(),
                                 ),
                               );
                             },

@@ -3,16 +3,33 @@ import 'package:flutter_application_1/wiews/kategori.dart';
 import 'package:flutter_application_1/wiews/oyun.dart';
 import 'package:flutter_application_1/wiews/harita.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/wiews/giris.dart';
 
 class OyunBioHaritaSayfasi extends StatelessWidget {
   final String title;
   const OyunBioHaritaSayfasi({super.key, required this.title});
 
+  Future<void> _cikisYap(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!context.mounted) return;
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+        (route) => false,
+      );
+    } catch (e) {
+      if (!context.mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Çıkış yapılamadı: $e")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
-    final String userEmail =
-        user?.email ?? "Misafir"; // Kullanıcı giriş yaptıysa e-posta gösterir
+    final String userEmail = user?.email ?? "Misafir";
 
     return Scaffold(
       body: Container(
@@ -29,37 +46,102 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
               padding: const EdgeInsets.all(25.0),
               child: Stack(
                 children: [
-                  // Arka planda hafif dekoratif ikonlar
+                  // ✅ 1) Dekoratif ikonlar tıklamayı engellemesin
+                  IgnorePointer(
+                    ignoring: true,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 0,
+                          right: 0,
+                          child: Opacity(
+                            opacity: 0.15,
+                            child: Icon(
+                              Icons.auto_awesome,
+                              size: 60,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 10,
+                          left: 0,
+                          child: Opacity(
+                            opacity: 0.12,
+                            child: Icon(
+                              Icons.science,
+                              size: 50,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // ✅ 2) Çıkış butonu EN ÜSTTE ve tıklanabilir
                   Positioned(
                     top: 0,
                     right: 0,
-                    child: Opacity(
-                      opacity: 0.15,
-                      child: Icon(
-                        Icons.auto_awesome,
-                        size: 60,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    left: 0,
-                    child: Opacity(
-                      opacity: 0.12,
-                      child: Icon(
-                        Icons.science,
-                        size: 50,
-                        color: Colors.white,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(14),
+                        onTap: () async {
+                          final onay = await showDialog<bool>(
+                            context: context,
+                            builder: (ctx) => AlertDialog(
+                              title: const Text("Çıkış Yap"),
+                              content: const Text(
+                                "Hesabınızdan çıkış yapmak istiyor musunuz?",
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(ctx, false),
+                                  child: const Text("İptal"),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () => Navigator.pop(ctx, true),
+                                  child: const Text("Çıkış Yap"),
+                                ),
+                              ],
+                            ),
+                          );
+
+                          if (onay == true) {
+                            await _cikisYap(context);
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 14, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.18),
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Icon(Icons.logout, color: Colors.white, size: 18),
+                              SizedBox(width: 6),
+                              Text(
+                                "Çıkış",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
 
-                  // Asıl içerik
+                  // ✅ 3) Asıl içerik
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // 🔹 Üst karşılama alanı
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -106,10 +188,8 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 40),
 
-                      // 🔹 Ana başlık
                       const Text(
                         "Keşfet!",
                         style: TextStyle(
@@ -127,8 +207,6 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 8),
-
-                      // Ayraç çizgi
                       Container(
                         width: 70,
                         height: 3,
@@ -137,20 +215,14 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
-
                       const SizedBox(height: 12),
-
                       const Text(
                         "Bilim dünyasında eğlenceli bir yolculuğa hazır mısın?",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white70,
-                        ),
+                        style: TextStyle(fontSize: 18, color: Colors.white70),
                       ),
                       const SizedBox(height: 40),
 
-                      // 👩‍🔬 Biyografi Kartı (EN ÜST)
                       _AnimatedMenuCard(
                         title: "Biyografi",
                         subtitle: "Türk ve Müslüman bilim insanlarını tanı!",
@@ -158,8 +230,6 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
                         color: const Color(0xFF6A0DAD),
                         page: Kategori(title: ""),
                       ),
-
-                      // 🌍 Harita Kartı
                       _AnimatedMenuCard(
                         title: "Harita",
                         subtitle: "Bilim insanlarının izlerini keşfet!",
@@ -167,8 +237,6 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
                         color: const Color(0xFF4A00E0),
                         page: const Harita(title: ""),
                       ),
-
-                      // 🕹️ Oyun Kartı (EN ALTA)
                       _AnimatedMenuCard(
                         title: "Oyun",
                         subtitle: "Bilim insanlarını eğlenceli şekilde öğren!",
@@ -187,8 +255,6 @@ class OyunBioHaritaSayfasi extends StatelessWidget {
     );
   }
 }
-
-// 🔹 Animasyonlu kart bileşeni
 class _AnimatedMenuCard extends StatefulWidget {
   final String title;
   final String subtitle;
@@ -211,23 +277,9 @@ class _AnimatedMenuCard extends StatefulWidget {
 class _AnimatedMenuCardState extends State<_AnimatedMenuCard> {
   double _scale = 1.0;
 
-  void _onTapDown(TapDownDetails details) {
-    setState(() {
-      _scale = 0.97;
-    });
-  }
-
-  void _onTapUp(TapUpDetails details) {
-    setState(() {
-      _scale = 1.0;
-    });
-  }
-
-  void _onTapCancel() {
-    setState(() {
-      _scale = 1.0;
-    });
-  }
+  void _onTapDown(TapDownDetails details) => setState(() => _scale = 0.97);
+  void _onTapUp(TapUpDetails details) => setState(() => _scale = 1.0);
+  void _onTapCancel() => setState(() => _scale = 1.0);
 
   @override
   Widget build(BuildContext context) {
@@ -261,7 +313,6 @@ class _AnimatedMenuCardState extends State<_AnimatedMenuCard> {
           ),
           child: Row(
             children: [
-              // 🔹 Görsel
               Container(
                 width: 85,
                 height: 85,
@@ -275,8 +326,6 @@ class _AnimatedMenuCardState extends State<_AnimatedMenuCard> {
                 ),
               ),
               const SizedBox(width: 20),
-
-              // 🔹 Metinler
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -293,20 +342,14 @@ class _AnimatedMenuCardState extends State<_AnimatedMenuCard> {
                     Text(
                       widget.subtitle,
                       style: const TextStyle(
-                        fontSize: 17, // hafif büyütülmüş açıklama
+                        fontSize: 17,
                         color: Colors.black54,
                       ),
                     ),
                   ],
                 ),
               ),
-
-              // 🔹 Ok ikonu
-              Icon(
-                Icons.arrow_forward_ios,
-                color: widget.color,
-                size: 22,
-              ),
+              Icon(Icons.arrow_forward_ios, color: widget.color, size: 22),
             ],
           ),
         ),
@@ -314,3 +357,4 @@ class _AnimatedMenuCardState extends State<_AnimatedMenuCard> {
     );
   }
 }
+
